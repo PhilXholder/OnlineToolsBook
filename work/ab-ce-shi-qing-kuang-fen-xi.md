@@ -136,7 +136,7 @@ CREATE TABLE develop.wsjtest_nameorder AS (
                 SUM (CASE WHEN flag_value IN ('5','6','7','8') THEN nvl(order_amt,0) END) AS discount_cost
             FROM
                 "public".roi_discount_detail_new
-            WHERE DATE ( tid -INTERVAL '8 HOUR') BETWEEN 'time1' AND 'time2'
+            WHERE tid BETWEEN 'time1' AND 'time2'
             GROUP BY 1
         ) q3 ON q3.order_id=q1.order_id 
         LEFT JOIN (
